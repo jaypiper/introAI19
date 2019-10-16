@@ -1,0 +1,145 @@
+\documentclass[UTF8]{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{textcomp}
+\usepackage{subfigure}
+\geometry{left=3.8cm,right=3.8cm}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+	language=java,                % the language of the code
+	basicstyle=\footnotesize,   % 代码字体大小
+	numbers=left,                   % where to put the line-numbers
+	numberstyle=\tiny\color{gray},  % 行号颜色
+	stepnumber=1,                   % 行行号隔几行标注一次
+	numbersep=5pt,                  % how far the line-numbers are from the code
+	backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+	showspaces=false,               % show spaces adding particular underscores
+	showstringspaces=false,         % underline spaces within strings
+	showtabs=false,                 % show tabs within strings adding particular underscores
+	frame=single,                   % adds a frame around the code
+	rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+	tabsize=2,                      % 行首和边框的距离
+	captionpos=b,                   % sets the caption-position to bottom
+	breaklines=true,                % sets automatic line breaking
+	breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+	title=\lstname,                   % show the filename of files included with \lstinputlisting;
+	% also try caption instead of title
+	keywordstyle=\color{blue},          % keyword style
+	commentstyle=\color{dkgreen},       % comment style
+	stringstyle=\color{mauve},         % string literal style
+	escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+	morekeywords={*,...}              % if you want to add more keywords to the set	
+}
+
+\begin{document}
+	\title{黑白棋游戏}
+	\author{陈璐 181250012 chenlu@smail.nju.edu.cn}
+	
+	\maketitle
+	
+	\tableofcontents
+	
+\section{MiniMax搜索实现}
+\subsection{基本思想}
+	\indent MiniMax算法的主要思想为：假定对手会选择所有可选择行动中最有利于自己的选择，在此基础上，选择对自己最有利的行为，具体而言，在每个状态中，agent都选择最坏情况下能够带来最优收益的行动，而每个行动的收益为执行此行动后所进入的次态的value，每个状态的value通过下式计算：\\
+	\begin{footnotesize}
+		\begin{equation}
+		MiniMax(s)=
+		\begin{cases}
+		UTILITY(s) & if\ TERMINAL-TEST(S) \\ 
+		max_{a\in ACTION(s)}MINIMAX(RESULT(s,a))& if\ PLAYER(s)=MAX \\ 
+		min_{a\in ACTION(s)}MINIMAX(RESULT(s,a))& if\ PLAYER(s)=MIN \\
+		\end{cases}
+		\end{equation}
+	\end{footnotesize}
+
+	\indent 而由于此游戏规模较大，搜索到最终状态所需的时间过长，因此，可对(1)式进行修改，使其在游戏结束时或搜索到一定深度后就通过一启发式函数返回对状态的估计值。\\
+	\indent 综上所述，基于上述式子和贪心的思想，即可编写程序对应实现。
+
+\subsection{主要实现过程}
+	\indent 对于此程序，可以将其内容与上一小节所描述的过程进行对应，主要分为计算value值和贪心选取最优行动两个部分。
+	
+	\indent\textbf{1、计算状态对应的value}
+	\begin{lstlisting}[caption=计算每个状态对应的value]
+	public float miniMaxRecursor(State state, int depth, boolean maximize) {
+			if (computedStates.containsKey(state)) 
+					return computedStates.get(state);
+			if (state.getStatus() != Status.Ongoing)
+					return finalize(state, state.heuristic());
+			if (depth == this.depth)
+					return state.heuristic();
+			float value = maximize ? Float.NEGATIVE_INFINITY : Float.POSITIVE_INFINITY;
+			int flag = maximize ? 1 : -1;
+			List<Action> test = state.getActions();
+			for (Action action : test) {
+					try {
+							State childState = action.applyTo(state);
+							float newValue = this.miniMaxRecursor(childState, depth + 1, !maximize);
+							if (flag * newValue > flag * value) 
+							value = newValue;
+					} catch (InvalidActionException e) {
+							throw new RuntimeException("Invalid action!");
+					}
+			}
+			return finalize(state, value);
+	}
+	\end{lstlisting}
+	\indent 此函数用于计算每个状态的value值，主要实现了对(1)式中3种不同情况进行讨论：\\
+	\indent 1、结束搜索(line 4-7)：当游戏结束或者到达设置深度时，即返回此状态对应的value。\\
+	\indent 2、递归计算子状态，以对当前状态进行评估(line 8-21)：判断当前执行行动的为max还是min(line 8-9)，并计算次态的value(line 14)，最后选择可以选择的最优value值作为当前结点的value，返回此值。\\
+	\indent\textbf{贪心选择最优行动}
+	\begin{lstlisting}[caption=贪心选取最优行动]
+	public Action decide(State state) {
+			float value = maximize ? Float.NEGATIVE_INFINITY : Float.POSITIVE_INFINITY;
+			List<Action> bestActions = new ArrayList<Action>();
+			int flag = maximize ? 1 : -1;
+			for (Action action : state.getActions()) {
+			try {
+					State newState = action.applyTo(state);
+					float newValue = this.miniMaxRecursor(newState, 1, !this.maximize);
+					if (flag * newValue > flag * value) {
+						value = newValue;
+						bestActions.clear();
+					}
+					if (flag * newValue >= flag * value) bestActions.add(action);
+			} catch (InvalidActionException e) {
+					throw new RuntimeException("Invalid action!");
+					}
+			}
+			// If there are more than one best actions, pick one of the best randomly
+			Collections.shuffle(bestActions);
+			return bestActions.get(0);
+	}
+	\end{lstlisting}
+	\indent 此过程和计算value时的过程类似，不同的是，在获得所有次态的value后，miniMaxRecursor过程对当前状态value进行更新，而decide过程只选择最优次态所对应的行动，并返回此行动。
+	
+\subsection{实现细节}
+\indent\textbf{1、使用动态规划思想，避免对状态进行重复计算}\\
+\indent 算法将已经计算过的状态和所对应的value值保存起来，在每次计算状态的value时，首先判断此状态是否已被计算(listing1 line2-3)，如果已经被计算，则直接返回此状态的value，如果未被计算，则在计算结束后将此状态和对应value储存起来(line 21)，以供后续使用，从而避免了多次对同一状态进行计算，以一定的空间代价换取搜索时间的缩减。\\
+\indent 在此处，已被计算的状态和其对应的value主要通过map数据结构进行存储，经过查询得知，JAVA中map的实现原理为hash，而其被理论上证明，在基于一定假设的情况下，插入元素和查找元素两个操作的均只需要常数时间代价，因此整体而言效率较高。\\
+\indent 但令人困惑的是，作者注释掉了存储操作，并标注上"THIS IS BROKEN DO NOT USE" 来告诉使用者不要使用此功能，但经过测试，去掉注释后程序依旧运行正常，因此，不明白作者的用意何在。\\
+\indent 如果我们假设插入和查找功能被正确实现，经过测试，不使用此功能时，单次运行时间平均约为1.52ms，使用此功能时，为1.47ms，二者差别不大，分析其原因，可能是因为设置深度较小，因此子问题的重叠部分并也比较少，从而此功能用处不大。\\
+\begin{lstlisting}[caption=存储state-value pair]
+private float finalize(State state, float value) {
+		// THIS IS BROKEN DO NOT USE
+		//computedStates.put(state, value);
+		return value;
+}
+\end{lstlisting}
+
+\indent\textbf{2、通过一个简单的指示位避免了对max和min状态的判断}\\
+\indent 按照(1)式的过程，在为min回合时，选择最小值，在max回合时，选择最大值，而实际上，所有元素的最小值对应的为所有元素取负后的最大值，因此设置标志位flag(line 4)，在max回合时其为1，比较时不取负，按照原值比较，选取其中最大值，在min回合时其为-1，比较时取负(乘以flag)，按照取负后的值比较，选取最大值，即原最小值。\\
+
+
+\end{document}
+
+
+
+

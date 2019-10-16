@@ -1,0 +1,4 @@
+\contentsline {section}{\numberline {1}MiniMax搜索实现}{1}
+\contentsline {subsection}{\numberline {1.1}基本思想}{1}
+\contentsline {subsection}{\numberline {1.2}主要实现过程}{1}
+\contentsline {subsection}{\numberline {1.3}实现细节}{3}

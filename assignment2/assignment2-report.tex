@@ -126,6 +126,7 @@
 \indent 在此处，已被计算的状态和其对应的value主要通过map数据结构进行存储，经过查询得知，JAVA中map的实现原理为hash，而其被理论上证明，在基于一定假设的情况下，插入元素和查找元素两个操作的均只需要常数时间代价，因此整体而言效率较高。\\
 \indent 但令人困惑的是，作者注释掉了存储操作，并标注上"THIS IS BROKEN DO NOT USE" 来告诉使用者不要使用此功能，但经过测试，去掉注释后程序依旧运行正常，因此，不明白作者的用意何在。\\
 \indent 如果我们假设插入和查找功能被正确实现，经过测试，不使用此功能时，单次运行时间平均约为1.52ms，使用此功能时，为1.47ms，二者差别不大，分析其原因，可能是因为设置深度较小，因此子问题的重叠部分并也比较少，从而此功能用处不大。\\
+\indent 在后续的所有实现过程中，我们仍按照作者的意思将其注释掉，不去使用它，分析时也不考虑它所带来的影响。\\
 \begin{lstlisting}[caption=存储state-value pair]
 private float finalize(State state, float value) {
 		// THIS IS BROKEN DO NOT USE
@@ -135,8 +136,28 @@ private float finalize(State state, float value) {
 \end{lstlisting}
 
 \indent\textbf{2、通过一个简单的指示位避免了对max和min状态的判断}\\
-\indent 按照(1)式的过程，在为min回合时，选择最小值，在max回合时，选择最大值，而实际上，所有元素的最小值对应的为所有元素取负后的最大值，因此设置标志位flag(line 4)，在max回合时其为1，比较时不取负，按照原值比较，选取其中最大值，在min回合时其为-1，比较时取负(乘以flag)，按照取负后的值比较，选取最大值，即原最小值。\\
+\indent 按照(1)式的过程，在为min回合时，选择最小值，在max回合时，选择最大值，而实际上，所有元素的最小值对应的为所有元素取负后的最大值，因此设置标志位flag(line 4)，在max回合时其为1，比较时不取负，按照原值比较，选取其中最大值，在min回合时其为-1，比较时取负(乘以flag)，按照取负后的值比较，选取最大值，即原最小值。
 
+\section{AlphaBeta剪枝}
+\subsection{实现过程}
+\indent 修改miniMaxRecursor过程，在参数列标中加入preval，用于表示当前父节点的最优值，也即是过程内原本就存在的value变量中的值，在每次循环过程中进行判断，由于当前循环中value中的值在不断向不利于父节点的方向发展（如父节点为max，子结点的value就不断减小，父节点为min，子节点的value就不断增大），因此，只要子节点目前的值劣于父节点已经可以获得的最优值，那么就无需对此子节点的后续结点进行搜索，而是直接进行剪枝，返回当前获得的值，由于此值劣于最优解，因此对最终结果不造成影响，具体实现过程如下所示。
+\begin{lstlisting}[caption=alphabeta剪枝]
+for (Action action : test) {
+		try {
+				State childState = action.applyTo(state);
+				float newValue = this.miniMaxRecursor(childState, depth + 1, !maximize,value);
+				if (flag * newValue > flag * value) 
+						value = newValue;
+		} catch (InvalidActionException e) {
+				throw new RuntimeException("Invalid action!");
+		}
+		if((0-flag) * value <= (0-flag) * preval) return value; //2
+}
+\end{lstlisting}
+
+\indent 如上所示，剪枝过程在listing4的第10行，其中0-flag表示其父节点的flag值，此判断语句的意思是：由于value值在不断向不利于父节点的方向变化，因此，如果当前值不优于父节点值，那么在整个循环中，value的值都不会优于父节点的值，即其不会对父节点进行更新，属于无用结点，因此停止探索，直接返回。
+
+\subsection{性能分析}
 
 \end{document}
 

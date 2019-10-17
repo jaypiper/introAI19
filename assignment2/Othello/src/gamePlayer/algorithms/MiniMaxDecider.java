@@ -28,6 +28,7 @@ public class MiniMaxDecider implements Decider {
 	private int depth;
 	// HashMap to avoid recalculating States
 	private Map<State, Float> computedStates;
+
 	// Used to generate a graph of the search space for each turn in SVG format
 	private static final boolean DEBUG = true;
 	
@@ -40,6 +41,7 @@ public class MiniMaxDecider implements Decider {
 		this.maximize = maximize;
 		this.depth = depth;
 		computedStates = new HashMap<State, Float>();
+
 	}
 	
 	/**
@@ -62,7 +64,7 @@ public class MiniMaxDecider implements Decider {
 			try {
 				// Algorithm!
 				State newState = action.applyTo(state);
-				float newValue = this.miniMaxRecursor(newState, 1, !this.maximize);
+				float newValue = this.miniMaxRecursor(newState, 1, !this.maximize, value);
 				// Better candidates?
 				if (flag * newValue > flag * value) {
 					value = newValue;
@@ -92,7 +94,7 @@ public class MiniMaxDecider implements Decider {
 	 * @return The best point count we can get on this branch of the state space to the specified depth.
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public float miniMaxRecursor(State state, int depth, boolean maximize) {
+	public float miniMaxRecursor(State state, int depth, boolean maximize, float preval) {
 		// Has this state already been computed?
 		if (computedStates.containsKey(state))
                     // Return the stored result
@@ -108,13 +110,14 @@ public class MiniMaxDecider implements Decider {
                 
 		// If not, recurse further. Identify the best actions to take.
 		float value = maximize ? Float.NEGATIVE_INFINITY : Float.POSITIVE_INFINITY;
+		//float next = maximize ? Float.NEGATIVE_INFINITY : Float.POSITIVE_INFINITY;
 		int flag = maximize ? 1 : -1;
 		List<Action> test = state.getActions();
 		for (Action action : test) {
 			// Check it. Is it better? If so, keep it.
 			try {
 				State childState = action.applyTo(state);
-				float newValue = this.miniMaxRecursor(childState, depth + 1, !maximize);
+				float newValue = this.miniMaxRecursor(childState, depth + 1, !maximize,value);
 				//Record the best value
                                 if (flag * newValue > flag * value) 
                                     value = newValue;
@@ -122,6 +125,7 @@ public class MiniMaxDecider implements Decider {
                                 //Should not go here
 				throw new RuntimeException("Invalid action!");
 			}
+			if((0-flag) * value <= (0-flag) * preval) return value; //2
 		}
 		// Store so we don't have to compute it again.
 		return finalize(state, value);
@@ -136,7 +140,7 @@ public class MiniMaxDecider implements Decider {
 	 */
 	private float finalize(State state, float value) {
 		// THIS IS BROKEN DO NOT USE
-		computedStates.put(state, value);
+		//computedStates.put(state, value);
 		return value;
 	}
 	

@@ -1,7 +1,7 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2019.10.13)  17 OCT 2019 13:41
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2019.10.13)  16 OCT 2019 19:56
 entering extended mode
-**assignment2-report.tex
-(D:\program\introAI19\assignment2\assignment2-report.tex
+**report-assignment1.tex
+(D:\program\report-assignment1.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
 (D:\Program_Files\CTEX\MiKTeX\tex\latex\base\article.cls
@@ -736,7 +736,7 @@ Normal \count register pool exhausted, switching to extended pool.
 (D:\Program_Files\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
-(D:\program\introAI19\assignment2\assignment2-report.aux)
+(D:\program\report-assignment1.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
@@ -830,14 +830,14 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(108.12054pt, 398.05391pt, 108.12054pt)
+* h-part:(L,W,R)=(113.81102pt, 386.67296pt, 113.81102pt)
 * v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=398.05391pt
+* \textwidth=386.67296pt
 * \textheight=556.47656pt
-* \oddsidemargin=35.85056pt
-* \evensidemargin=35.85056pt
+* \oddsidemargin=41.54103pt
+* \evensidemargin=41.54103pt
 * \topmargin=-13.87262pt
 * \headheight=12.0pt
 * \headsep=25.0pt
@@ -943,7 +943,7 @@ Requested font "[lmroman12-regular]:mapping=tex-text" at 14.4pt
  -> D:/Program_Files/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman12-regular.otf
 Requested font "[lmroman12-bold]:mapping=tex-text" at 14.4pt
  -> D:/Program_Files/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman12-bold.otf
-(D:\program\introAI19\assignment2\assignment2-report.toc
+(D:\program\report-assignment1.toc
 Requested font "SimSun" at 10.0pt
  -> D:/Program_Files/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf
 Requested font "SimSun/ICU" at 10.0pt
@@ -1008,26 +1008,101 @@ Requested font "[lmroman12-bold]:mapping=tex-text" at 12.0pt
 Requested font "SimHei/ICU:script=latn;language=DFLT;mapping=tex-text;" at 12.0
 pt
  -> C:/Windows/Fonts/simhei.ttf
+ [1
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--53
-
- []
-
-[1
-
-] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 124--130
+]
+Underfull \hbox (badness 10000) in paragraph at lines 86--91
 
  []
 
-[3] [4] [5] (D:\program\introAI19\assignment2\assignment2-report.aux) ) 
+[2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 125--127
+
+ []
+
+File: ai1-1.png Graphic file (type QTm)
+<use  "ai1-1.png" >
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+
+ []
+
+[4]
+File: ai1-2.png Graphic file (type QTm)
+ <use  "ai1-2.png" >
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 170--175
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--199
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 200--203
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--226
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 229--234
+
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 256--257
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 283--284
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 299--300
+
+ []
+
+[10]
+File: ai1-3.png Graphic file (type QTm)
+ <use  "ai1-3.png" >
+Underfull \hbox (badness 10000) in paragraph at lines 343--345
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--350
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 352--363
+
+ []
+
+[11] [12] [13] (D:\program\report-assignment1.aux) ) 
 Here is how much of TeX's memory you used:
- 17736 strings out of 430478
- 351999 string characters out of 3191151
- 504019 words of memory out of 3000000
- 20654 multiletter control sequences out of 15000+200000
+ 17806 strings out of 430478
+ 352828 string characters out of 3191151
+ 497019 words of memory out of 3000000
+ 20719 multiletter control sequences out of 15000+200000
  7744 words of font info for 58 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,7n,72p,850b,1588s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,9n,72p,850b,1590s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on assignment2-report.pdf (5 pages).
+Output written on report-assignment1.pdf (13 pages).

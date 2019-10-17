@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7da50fb6-4ef3-4f92-8b40-e2de046f0994" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Othello/gamePlayer/algorithms/MiniMaxDecider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Othello/gamePlayer/algorithms/MiniMaxDecider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamePlayer/algorithms/MiniMaxDecider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamePlayer/algorithms/MiniMaxDecider.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,6 +70,7 @@
       <workItem from="1571031283842" duration="650000" />
       <workItem from="1571219890864" duration="11054000" />
       <workItem from="1571239733982" duration="34000" />
+      <workItem from="1571276451558" duration="3791000" />
     </task>
     <servers />
   </component>
@@ -79,7 +82,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

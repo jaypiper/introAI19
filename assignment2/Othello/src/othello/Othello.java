@@ -153,7 +153,7 @@ class GamePanel extends JPanel implements MouseListener {
 		List<Action> actions;
 		boolean isPass;
 		do {
-			System.out.println("Starting Computer Move");
+			//System.out.println("Starting Computer Move");
 			OthelloAction action = (OthelloAction) computerPlayer.decide(board);
 			try {
 				board = action.applyTo(board);
@@ -163,7 +163,7 @@ class GamePanel extends JPanel implements MouseListener {
 			}
 			repaint();
 			actions = board.getActions();
-			System.out.println("Finished with computer move");
+			//System.out.println("Finished with computer move");
 			isPass = (actions.size() == 1 && ((OthelloAction)actions.get(0)).isPass());
 			if (isPass) {
 				try {
@@ -325,7 +325,7 @@ public class Othello extends JFrame {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				// 0 - Human plays first, 1000ms - time for computer decision (for MTDDecider)
-				Othello frame = new Othello(0, 1000, 2);
+				Othello frame = new Othello(0, 1000, 5);
 			}
 		});
 

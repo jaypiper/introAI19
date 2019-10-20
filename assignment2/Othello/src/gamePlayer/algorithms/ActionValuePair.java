@@ -5,7 +5,7 @@ import gamePlayer.Action;
 
 public class ActionValuePair implements Comparable<ActionValuePair> {
 
-	Action action;
+	Action action = null;
 	ActionValuePair principalVariation;
 	int value, previousValue;
 	

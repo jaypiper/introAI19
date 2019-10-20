@@ -56,6 +56,7 @@ public class OthelloState implements State {
 		generateTables((short)0, (byte)0, (byte)0);
 		generateHashValues();
 		System.out.println("Finished generating tables!");
+
 	}
 	
 	/**
@@ -83,7 +84,7 @@ public class OthelloState implements State {
 		// End case?
 		if (depth == dimension) {
 			if (!isValid(line)) return;
-			pointTable[line + 32768] = points;
+			pointTable[line + 32768] = points;  //2^15
 			generateLookupAndMoveValue(line);
 			generateStabilityValue(line);
 			return;

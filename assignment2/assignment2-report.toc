@@ -5,3 +5,9 @@
 \contentsline {section}{\numberline {2}AlphaBeta剪枝}{4}
 \contentsline {subsection}{\numberline {2.1}实现过程}{4}
 \contentsline {subsection}{\numberline {2.2}性能分析}{5}
+\contentsline {section}{\numberline {3}heuristic函数}{6}
+\contentsline {subsection}{\numberline {3.1}函数分析}{6}
+\contentsline {subsection}{\numberline {3.2}改进}{6}
+\contentsline {section}{\numberline {4}MTDDecider类}{7}
+\contentsline {subsection}{\numberline {4.1}实现过程}{7}
+\contentsline {subsection}{\numberline {4.2}与MiniMaxDecider类的异同分析}{8}

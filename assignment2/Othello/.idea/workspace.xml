@@ -3,8 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="7da50fb6-4ef3-4f92-8b40-e2de046f0994" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Othello/gamePlayer/algorithms/ActionValuePair.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Othello/gamePlayer/algorithms/ActionValuePair.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Othello/gamePlayer/algorithms/MTDDecider$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Othello/gamePlayer/algorithms/MTDDecider$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Othello/gamePlayer/algorithms/MTDDecider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Othello/gamePlayer/algorithms/MTDDecider.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Othello/gamePlayer/algorithms/MiniMaxDecider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Othello/gamePlayer/algorithms/MiniMaxDecider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Othello/othello/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Othello/othello/GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Othello/othello/Othello$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Othello/othello/Othello$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Othello/othello/OthelloState$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Othello/othello/OthelloState$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Othello/othello/OthelloState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Othello/othello/OthelloState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamePlayer/algorithms/ActionValuePair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamePlayer/algorithms/ActionValuePair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamePlayer/algorithms/MTDDecider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamePlayer/algorithms/MTDDecider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamePlayer/algorithms/MiniMaxDecider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamePlayer/algorithms/MiniMaxDecider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/othello/Othello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/othello/Othello.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/othello/OthelloState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/othello/OthelloState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment2-report.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment2-report.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment2-report.log" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment2-report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment2-report.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment2-report.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment2-report.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment2-report.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment2-report.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment2-report.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment2-report.toc" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +41,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -70,7 +88,10 @@
       <workItem from="1571031283842" duration="650000" />
       <workItem from="1571219890864" duration="11054000" />
       <workItem from="1571239733982" duration="34000" />
-      <workItem from="1571276451558" duration="3791000" />
+      <workItem from="1571276451558" duration="13105000" />
+      <workItem from="1571322147156" duration="4890000" />
+      <workItem from="1571362080498" duration="13635000" />
+      <workItem from="1571400077969" duration="1037000" />
     </task>
     <servers />
   </component>
@@ -93,13 +114,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/othello/Othello.java</url>
-          <line>322</line>
-          <properties class="othello.Othello" method="main">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="1" />
+          <line>324</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

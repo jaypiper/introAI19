@@ -152,9 +152,6 @@ public class MTDDecider implements Decider {
 						alpha = Math.max(alpha, value);
 					} else*/
 					//	beta = Math.min(beta, value);
-						
-					
-					
 				} catch (InvalidActionException e) {
 					e.printStackTrace();
 				} catch (OutOfTimeException e) {
@@ -196,7 +193,7 @@ public class MTDDecider implements Decider {
 			}
 			
 			System.out.printf("%2.2f",0.001*(System.currentTimeMillis() - startTimeMillis));
-			System.out.println(": " + d + ": "+actions.get(0));
+//			System.out.println(": " + d + ": "+actions.get(0));
 			
 			if (times_up()) {
 				break;
@@ -250,7 +247,6 @@ public class MTDDecider implements Decider {
 		int beta;
 		int upperbound = WIN;
 		int lowerbound = LOSE;
-
 		int flag = maximizer ? 1 : -1;
 
 		while (lowerbound < upperbound) {
@@ -267,7 +263,6 @@ public class MTDDecider implements Decider {
 				lowerbound = g;
 			}
 		}
-
 		return g;
 	}
 	
@@ -303,7 +298,6 @@ public class MTDDecider implements Decider {
 			if (times_up())
 				throw new OutOfTimeException();
 		}
-
 		// Note that we checked a new node
 		checkedNodes++;
 		// Specify us
@@ -336,7 +330,6 @@ public class MTDDecider implements Decider {
 		}
 
 		int bestValue = LOSE;
-
 		// Partial move ordering. Check value up to depth D-3 and order by that
 		int[] depthsToSearch;
 		if (depth > 4) {

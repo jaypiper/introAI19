@@ -79,7 +79,7 @@ public class MiniMaxDecider implements Decider {
 		// If there are more than one best actions, pick one of the best randomly
 		Collections.shuffle(bestActions);
 		long endTime=System.currentTimeMillis();
-		System.out.println("running time "+(endTime-startTime)+"ms");
+		System.out.print((endTime-startTime)+" ");
 		return bestActions.get(0);
 	}
 	
@@ -140,7 +140,7 @@ public class MiniMaxDecider implements Decider {
 	 */
 	private float finalize(State state, float value) {
 		// THIS IS BROKEN DO NOT USE
-		//computedStates.put(state, value);
+		computedStates.put(state, value);
 		return value;
 	}
 	
